@@ -10,9 +10,9 @@ Pod::Spec.new do |s|
   s.homepage         = package['homepage']
   s.authors          = package['author']
   s.platform         = :ios, "9.0"
-  s.source           = { :git => 'https://github.com/Martinzz/react-native-trtc.git', :tag => "v#{s.version}" }
+  s.source           = { :git => 'git@github.com:baseed-inc/react-native-trtc.git', :tag => "v#{s.version}" }
   s.source_files     = 'ios/**/*.{h,m}'
   s.requires_arc     = true
   s.dependency         'React'
-  s.dependency "TXLiteAVSDK_TRTC", "7.7.9458"
+  s.dependency "TXLiteAVSDK_TRTC"
 end
