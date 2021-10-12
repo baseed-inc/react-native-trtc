@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.source_files     = 'ios/**/*.{h,m}'
   s.requires_arc     = true
   s.dependency         'React'
-  s.dependency "TXLiteAVSDK_TRTC", "9.1.10563"
+  s.dependency "TXLiteAVSDK_TRTC", "9.2.10637"
 end
