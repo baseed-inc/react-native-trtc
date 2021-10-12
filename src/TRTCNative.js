@@ -1,8 +1,8 @@
-import {NativeModules, NativeEventEmitter} from "react-native";
+import { NativeModules, NativeEventEmitter } from "react-native";
 import {
     VideoResolution,
 } from "./Types";
-const { RTCTencent, TRTCBeauty} = NativeModules;
+const { RTCTencent, TRTCBeauty } = NativeModules;
 const TRTCEventEmitter = new NativeEventEmitter(RTCTencent);
 /**
  * @ignore
@@ -25,7 +25,7 @@ export default class TRTCNative {
      * @param options
      * @returns {TRTCNative}
      */
-    static create(options){
+    static create(options) {
         if (engine)
             return engine;
         RTCTencent.init(Object.assign({}, options));
@@ -37,7 +37,7 @@ export default class TRTCNative {
      * 设置 Log 输出级别
      * @param level
      */
-    static setLogLevel(level){
+    static setLogLevel(level) {
         RTCTencent.setLogLevel(level);
     }
 
@@ -46,7 +46,7 @@ export default class TRTCNative {
      * @param enable 指定是否启用，默认为禁止状态
 
      */
-    static setConsoleEnabled(enable){
+    static setConsoleEnabled(enable) {
         RTCTencent.setConsoleEnabled(enable);
     }
 
@@ -54,7 +54,7 @@ export default class TRTCNative {
      * 启用或禁用 Log 的本地压缩。
      * @param enable 指定是否启用，默认为启动状态
      */
-    static setLogCompressEnabled(enable){
+    static setLogCompressEnabled(enable) {
         RTCTencent.setLogCompressEnabled(enable);
     }
 
@@ -64,14 +64,14 @@ export default class TRTCNative {
      * ios 日志文件默认保存在 sandbox Documents/log 下，如需修改，必须在所有方法前调用。
      * android 日志文件默认保存在 /app私有目录/files/log/tencent/liteav/ 下，如需修改, 必须在所有方法前调用，并且保证目录存在及应用有目录的读写权限。
      */
-    static setLogDirPath(path){
+    static setLogDirPath(path) {
         RTCTencent.setLogDirPath(path);
     }
 
     /**
      * 获取 SDK 版本信息
      */
-    static getSDKVersion(){
+    static getSDKVersion() {
         return RTCTencent.getSDKVersion();
     }
     /**
@@ -131,7 +131,7 @@ export default class TRTCNative {
      * 设置本地图像的顺时针旋转角度
      * @param rotation
      */
-    setLocalViewRotation(rotation){
+    setLocalViewRotation(rotation) {
         RTCTencent.setLocalViewRotation(rotation);
     }
 
@@ -140,7 +140,7 @@ export default class TRTCNative {
      * @param userId
      * @param rotation
      */
-    setRemoteViewRotation(userId, rotation){
+    setRemoteViewRotation(userId, rotation) {
         RTCTencent.setRemoteViewRotation(userId, rotation);
     }
 
@@ -148,7 +148,7 @@ export default class TRTCNative {
      * 设置视频编码输出的画面方向，即设置远端用户观看到的和服务器录制的画面方向
      * @param rotation
      */
-    setVideoEncoderRotation(rotation){
+    setVideoEncoderRotation(rotation) {
         RTCTencent.setVideoEncoderRotation(rotation);
     }
 
@@ -156,7 +156,7 @@ export default class TRTCNative {
      * 设置本地摄像头预览画面的镜像模式
      * @param mirror
      */
-    setLocalViewMirror(mirror){
+    setLocalViewMirror(mirror) {
         RTCTencent.setLocalViewMirror(mirror);
     }
 
@@ -165,7 +165,7 @@ export default class TRTCNative {
      * 该接口不改变本地摄像头的预览画面，但会改变另一端用户看到的（以及服务器录制的）画面效果
      * @param mirror 是否开启远端镜像，YES：开启远端画面镜像；NO：关闭远端画面镜像，默认值：NO。
      */
-    setVideoEncoderMirror(mirror){
+    setVideoEncoderMirror(mirror) {
         RTCTencent.setVideoEncoderMirror(mirror);
     }
 
@@ -173,7 +173,7 @@ export default class TRTCNative {
      * 设置重力感应的适应模式
      * @param mode 默认值：TRTCGSensorMode_UIAutoLayout
      */
-    setGSensorMode(mode){
+    setGSensorMode(mode) {
         RTCTencent.setGSensorMode(mode);
     }
 
@@ -183,7 +183,7 @@ export default class TRTCNative {
      * @param smallVideoEncParam 小流的视频参数
      * @return Promise 0：成功；-1：大画面已经是最低画质
      */
-    enableEncSmallVideoStream(enable, smallVideoEncParam){
+    enableEncSmallVideoStream(enable, smallVideoEncParam) {
         return RTCTencent.enableEncSmallVideoStream(enable, smallVideoEncParam);
     }
 
@@ -192,7 +192,7 @@ export default class TRTCNative {
      * @param userId
      * @param type 视频流类型，即选择看大画面或小画面，默认为大画面
      */
-    setRemoteVideoStreamType(userId, type){
+    setRemoteVideoStreamType(userId, type) {
         RTCTencent.setRemoteVideoStreamType(userId, type);
     }
 
@@ -201,7 +201,7 @@ export default class TRTCNative {
      * 低端设备推荐优先选择低清晰度的小画面。 如果对方没有开启双路视频模式，则此操作无效。
      * @param type
      */
-    setPriorRemoteVideoStreamType(type){
+    setPriorRemoteVideoStreamType(type) {
         RTCTencent.setPriorRemoteVideoStreamType(type);
     }
 
@@ -211,31 +211,24 @@ export default class TRTCNative {
      * @param type
      * @return Promise
      */
-    snapshotVideo(userId, type){
+    snapshotVideo(userId, type) {
         return RTCTencent.snapshotVideo(userId, type);
     }
 
-    /**
-     * 设置音频质量
-     * @param quality AudioQuality
-     */
-    setAudioQuality(quality){
-        RTCTencent.setAudioQuality(quality);
-    }
     /**
      * 开始进行网络测速（视频通话期间请勿测试，以免影响通话质量）
      * @param sdkAppId
      * @param userId
      * @param userSig
      */
-    startSpeedTest(sdkAppId, userId, userSig){
+    startSpeedTest(sdkAppId, userId, userSig) {
         RTCTencent.startSpeedTest(sdkAppId, userId, userSig);
     }
 
     /**
      * 停止服务器测速
      */
-    stopSpeedTest(){
+    stopSpeedTest() {
         RTCTencent.stopSpeedTest();
     }
 
@@ -244,14 +237,14 @@ export default class TRTCNative {
      * @param streamId
      * @param streamType
      */
-    startPublishing(streamId, streamType){
+    startPublishing(streamId, streamType) {
         RTCTencent.startPublishing(streamId, streamType);
     }
 
     /**
      * 停止向腾讯云的直播 CDN 推流
      */
-    stopPublishing(){
+    stopPublishing() {
         RTCTencent.stopPublishing();
     }
 
@@ -261,14 +254,14 @@ export default class TRTCNative {
      * @param bizId
      * @param url
      */
-    startPublishCDNStream(appId, bizId, url){
+    startPublishCDNStream(appId, bizId, url) {
         RTCTencent.startPublishCDNStream(appId, bizId, url);
     }
 
     /**
      * 停止向非腾讯云地址转推
      */
-    stopPublishCDNStream(){
+    stopPublishCDNStream() {
         RTCTencent.stopPublishCDNStream();
     }
 
@@ -277,14 +270,14 @@ export default class TRTCNative {
      * @param options
      * @param scene
      */
-    enterRoom(options, scene){
+    enterRoom(options, scene) {
         RTCTencent.enterRoom(options, scene)
     }
 
     /**
      * 销毁
      */
-    destroy(){
+    destroy() {
         this.removeAllListeners();
         engine = undefined;
         RTCTencent.destroy(); // 退出房间并销毁
@@ -293,7 +286,7 @@ export default class TRTCNative {
     /**
      * 退出房间
      */
-    exitRoom(){
+    exitRoom() {
         RTCTencent.exitRoom();
     }
 
@@ -301,21 +294,22 @@ export default class TRTCNative {
      * 切换角色类型
      * @param role
      */
-    switchRole(role){
+    switchRole(role) {
         RTCTencent.switchRole(role)
     }
 
     /**
-     * 启用本地音频
+     * ローカルオーディオの有効化
+     * @param quality AudioQuality 音声品質の設定
      */
-    startLocalAudio(){
-        RTCTencent.startLocalAudio()
+    startLocalAudio(quality) {
+        RTCTencent.startLocalAudio(quality);
     }
 
     /**
      * 关闭本地音频
      */
-    stopLocalAudio(){
+    stopLocalAudio() {
         RTCTencent.stopLocalAudio()
     }
 
@@ -323,7 +317,7 @@ export default class TRTCNative {
      * 静音/取消静音本地的音频
      * @param mute
      */
-    muteLocalAudio(mute){
+    muteLocalAudio(mute) {
         RTCTencent.muteLocalAudio(mute)
     }
 
@@ -331,7 +325,7 @@ export default class TRTCNative {
      * 设置音频路由
      * @param route
      */
-    setAudioRoute(route){
+    setAudioRoute(route) {
         RTCTencent.setAudioRoute(route)
     }
 
@@ -340,14 +334,14 @@ export default class TRTCNative {
      * @param userId
      * @param mute
      */
-    muteRemoteAudio(userId, mute){
+    muteRemoteAudio(userId, mute) {
         RTCTencent.muteRemoteAudio(userId, mute)
     }
 
     /**
      * 静音/取消静音所有用户的声音
      */
-    muteAllRemoteAudio(mute){
+    muteAllRemoteAudio(mute) {
         RTCTencent.muteAllRemoteAudio(mute)
     }
 
@@ -356,7 +350,7 @@ export default class TRTCNative {
      * @param userId
      * @param volume 音量大小，取值0 - 100
      */
-    muteAllRemoteAudio(userId, volume){
+    setRemoteAudioVolume(userId, volume) {
         RTCTencent.setRemoteAudioVolume(userId, volume)
     }
 
@@ -364,7 +358,7 @@ export default class TRTCNative {
      * 设置 SDK 采集音量
      * @param volume 音量大小，取值0 - 100，默认值为100
      */
-    setAudioCaptureVolume(volume){
+    setAudioCaptureVolume(volume) {
         RTCTencent.setAudioCaptureVolume(volume)
     }
 
@@ -372,7 +366,7 @@ export default class TRTCNative {
      * 获取 SDK 采集音量
      * @returns Promise
      */
-    getAudioCaptureVolume(){
+    getAudioCaptureVolume() {
         return RTCTencent.getAudioCaptureVolume()
     }
 
@@ -380,7 +374,7 @@ export default class TRTCNative {
      * 设置 SDK 播放音量
      * @param volume 音量大小，取值0 - 100，默认值为100
      */
-    setAudioPlayoutVolume(volume){
+    setAudioPlayoutVolume(volume) {
         RTCTencent.setAudioPlayoutVolume(volume)
     }
 
@@ -388,7 +382,7 @@ export default class TRTCNative {
      * 获取 SDK 播放音量
      * @returns Promise
      */
-    getAudioPlayoutVolume(){
+    getAudioPlayoutVolume() {
         return RTCTencent.getAudioPlayoutVolume()
     }
 
@@ -398,7 +392,7 @@ export default class TRTCNative {
      * @param intervalMs 决定了 onUserVoiceVolume 回调的触发间隔，单位为ms，最小间隔为100ms，
      * 如果小于等于0则会关闭回调，建议设置为300ms；详细的回调规则请参考 onUserVoiceVolume 的注释说明
      */
-    enableAudioVolumeEvaluation(intervalMs = 300){
+    enableAudioVolumeEvaluation(intervalMs = 300) {
         RTCTencent.enableAudioVolumeEvaluation(intervalMs)
     }
 
@@ -407,21 +401,21 @@ export default class TRTCNative {
      * @param filePath 录音文件保存路径
      * @returns {Promise<void>} 0：成功；-1：录音已开始；-2：文件或目录创建失败；-3：后缀指定的音频格式不支持
      */
-    startAudioRecording(filePath){
+    startAudioRecording(filePath) {
         return RTCTencent.startAudioRecording(filePath);
     }
 
     /**
      * 停止录音
      */
-    stopAudioRecording(){
+    stopAudioRecording() {
         RTCTencent.stopAudioRecording()
     }
 
     /**
      * 切换摄像头
      */
-    switchCamera(){
+    switchCamera() {
         RTCTencent.switchCamera()
     }
 
@@ -429,7 +423,7 @@ export default class TRTCNative {
      * 设置美颜类型
      * @param beautyStyle 三种美颜风格：0 ：光滑 1：自然 2：朦胧
      */
-    setBeautyStyle(beautyStyle){
+    setBeautyStyle(beautyStyle) {
         TRTCBeauty.setBeautyStyle(beautyStyle)
     }
 
@@ -437,7 +431,7 @@ export default class TRTCNative {
      * 设置美颜级别
      * @param beautyLevel 美颜级别，取值范围0 - 9； 0表示关闭，1 - 9值越大，效果越明显。
      */
-    setBeautyLevel(beautyLevel){
+    setBeautyLevel(beautyLevel) {
         TRTCBeauty.setBeautyLevel(beautyLevel)
     }
 
@@ -445,7 +439,7 @@ export default class TRTCNative {
      * 设置美白级别
      * @param whitenessLevel 美白级别，取值范围0 - 9； 0表示关闭，1 - 9值越大，效果越明显。
      */
-    setWhitenessLevel(whitenessLevel){
+    setWhitenessLevel(whitenessLevel) {
         TRTCBeauty.setWhitenessLevel(whitenessLevel)
     }
 
@@ -453,7 +447,7 @@ export default class TRTCNative {
      * 开启清晰度增强
      * @param enable
      */
-    enableSharpnessEnhancement(enable){
+    enableSharpnessEnhancement(enable) {
         TRTCBeauty.enableSharpnessEnhancement(enable)
     }
 
@@ -461,9 +455,18 @@ export default class TRTCNative {
      * 设置红润级别
      * @param ruddyLevel 取值范围0 - 9； 0表示关闭，1 - 9值越大，效果越明显。
      */
-    setRuddyLevel(ruddyLevel){
+    setRuddyLevel(ruddyLevel) {
         TRTCBeauty.setRuddyLevel(ruddyLevel)
     }
+
+    /**
+     * 
+     * @param {SystemVolumeType} systemVolumeType 
+     */
+    setSystemVolumeType(systemVolumeType) {
+        RTCTencent.setSystemVolumeType(systemVolumeType)
+    }
+
 }
 
 

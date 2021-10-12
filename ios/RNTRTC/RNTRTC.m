@@ -143,9 +143,7 @@ RCT_EXPORT_METHOD(snapshotVideo:(NSString*)userId type:(int)type resolve:(RCTPro
         resolve(base64);
     }];
 }
-RCT_EXPORT_METHOD(setAudioQuality:(int) quality){
-    [self.rtcEngine setAudioQuality:quality];
-}
+
 /**
  切换角色类型
  */
@@ -156,8 +154,8 @@ RCT_EXPORT_METHOD(switchRole:(int )role){
 /**
  启用本地音频
  */
-RCT_EXPORT_METHOD(startLocalAudio){
-    [self.rtcEngine startLocalAudio];
+RCT_EXPORT_METHOD(startLocalAudio:(int) quality){
+    [self.rtcEngine startLocalAudio:(TRTCAudioQuality)quality];
 }
 
 /**
@@ -293,6 +291,10 @@ RCT_EXPORT_METHOD(stopAudioRecording){
 RCT_EXPORT_METHOD(switchCamera){
     [self.rtcEngine switchCamera];
 }
+RCT_EXPORT_METHOD(setSystemVolumeType:(int)systemVolumeType) {
+    [[self.rtcEngine getDeviceManager] setSystemVolumeType:(TXSystemVolumeType)systemVolumeType];
+}
+
 
 #pragma mark - TRTCCloudDelegate
 - (void)onError:(TXLiteAVError)errCode errMsg:(nullable NSString *)errMsg extInfo:(nullable NSDictionary*)extInfo{
