@@ -329,6 +329,10 @@ export default class TRTCNative {
         RTCTencent.setAudioRoute(route)
     }
 
+    setAudioRouteDevice(route) {
+        RTCTencent.setAudioRoutesetAudioRouteDevice(route)
+    }
+
     /**
      * 静音/取消静音指定的远端用户的声音
      * @param userId

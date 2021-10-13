@@ -234,6 +234,10 @@ RCT_EXPORT_METHOD(setAudioRoute:(int) route){
     [self.rtcEngine setAudioRoute: route];
 }
 
+RCT_EXPORT_METHOD(setAudioRouteDevice:(int) route){
+    [[self.rtcEngine getDeviceManager] setAudioRoute:(TXAudioRoute)route];
+}
+
 /**
  销毁
  */
