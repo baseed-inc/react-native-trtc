@@ -330,7 +330,7 @@ export default class TRTCNative {
     }
 
     setAudioRouteDevice(route) {
-        RTCTencent.setAudioRoutesetAudioRouteDevice(route)
+        RTCTencent.setAudioRouteDevice(route)
     }
 
     /**
