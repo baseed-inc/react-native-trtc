@@ -86,29 +86,17 @@ export default class TRTCNative {
         };
         let map = this._listeners.get(event);
         if (map === undefined) {
-            map = new Map();
+            map = new Set();
             this._listeners.set(event, map);
         }
-        TRTCEventEmitter.addListener(event, callback);
-        map.set(listener, callback);
+        const emitterSubscription = TRTCEventEmitter.addListener(event, callback);
+        map.add(emitterSubscription);
         return {
             remove: () => {
-                this.removeListener(event, listener);
+                map.delete(emitterSubscription);
+                emitterSubscription.remove();
             }
         };
-    }
-
-    /**
-     * 移除事件
-     * @param event
-     * @param listener
-     */
-    removeListener(event, listener) {
-        const map = this._listeners.get(event);
-        if (map === undefined)
-            return;
-        TRTCEventEmitter.removeListener(event, map.get(listener));
-        map.delete(listener);
     }
 
     /**
@@ -117,13 +105,18 @@ export default class TRTCNative {
      */
     removeAllListeners(event) {
         if (event === undefined) {
-            this._listeners.forEach((value, key) => {
-                TRTCEventEmitter.removeAllListeners(key);
+            this._listeners.forEach((setObject, eventKey) => {
+                setObject.forEach((emitterSubscription) => {
+                    emitterSubscription.remove();
+                });
             });
             this._listeners.clear();
             return;
         }
-        TRTCEventEmitter.removeAllListeners(event);
+        const setObject = this._listeners.get(event);
+        setObject.forEach((emitterSubscription) => {
+            emitterSubscription.remove();
+        });
         this._listeners.delete(event);
     }
 
