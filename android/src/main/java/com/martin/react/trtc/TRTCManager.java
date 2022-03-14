@@ -73,11 +73,11 @@ public class TRTCManager {
         TRTCCloudDef.TRTCParams trtcParams = new TRTCCloudDef.TRTCParams();
         int sdkAppId = options.hasKey("sdkAppId") ? options.getInt("sdkAppId") : null;
         String userId = options.hasKey("userId") ? options.getString("userId") : null;
-        int roomId = options.hasKey("roomId") ? options.getInt("roomId") : null;
+        String strRoomId = options.hasKey("roomId") ? options.getString("roomId") : null;
         String userSig = options.hasKey("userSig") ? options.getString("userSig") : null;
         trtcParams.sdkAppId = sdkAppId;
         trtcParams.userId = userId;
-        trtcParams.roomId = roomId;
+        trtcParams.strRoomId = strRoomId;
         trtcParams.userSig = userSig;
 
         if(options.hasKey("privateMapKey")){
