@@ -258,8 +258,8 @@ public class TRTCModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void startLocalAudio() {
-        TRTCManager.getInstance().startLocalAudio();
+    public void startLocalAudio(int quality) {
+        TRTCManager.getInstance().startLocalAudio(quality);
     }
     @ReactMethod
     public void stopLocalAudio() {

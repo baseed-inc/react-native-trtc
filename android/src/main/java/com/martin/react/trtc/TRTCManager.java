@@ -93,8 +93,8 @@ public class TRTCManager {
         this.mTRTCCloud.switchRole(role);
     }
 
-    public void startLocalAudio(){
-        this.mTRTCCloud.startLocalAudio();
+    public void startLocalAudio(int quality){
+        this.mTRTCCloud.startLocalAudio(quality);
     }
     public void stopLocalAudio(){
         this.mTRTCCloud.stopLocalAudio();
